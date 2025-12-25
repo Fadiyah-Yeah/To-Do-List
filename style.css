@@ -1,0 +1,185 @@
+:root {
+    --bg: #f8efe5;
+    --card: #f2d9c7;
+    --primary: #a48d78;
+    --accent: #ffffff;
+    --text: #2e2e2e;
+    --muted: #8a8a8a;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 16px; 
+    background-color: #f8efe5;
+    background-image: url("bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-container {
+    width: min(92vw, 420px);
+    background: var(--card);
+    border-radius: 16px;
+    padding: clamp(20px, 4vw, 28px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: 24px;
+    font-size: clamp(20px, 3.5vw, 24px);
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 20px;
+    font-size: clamp(12px, 2.5vw, 14px);
+}
+
+.input-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    font-size: 14px;
+    font-size: clamp(14px, 3vw, 16px);
+    padding: clamp(12px, 3vw, 14px);
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: clamp(14px, 3vw, 16px);
+    padding: clamp(12px, 3vw, 14px) 18px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f9fbfc;
+    margin-bottom: 10px;
+    border: 1px solid var(--accent);
+}
+
+li.completed span {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+li span {
+    flex: 1;
+    font-size: 14px;
+}
+
+.delete {
+    background: transparent;
+    border: none;
+    color: #b04b4b;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text);
+}
+
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .input-box {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    button {
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    li {
+        padding: 14px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .todo-container {
+        width: 360px;
+    }
+}
+
+
+.confetti {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background: #f4a3c4; /* pink lembut */
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+    pointer-events: none;
+    animation: confetti-fall 2.2s ease-out forwards;
+    z-index: 9999;
+    opacity: 0.9;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-20px) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh) scale(0.6) rotate(720deg);
+        opacity: 0;
+    }
+}
